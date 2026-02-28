@@ -1,111 +1,65 @@
-import React, { cache } from "react";
-import { wordpressApi } from "@/lib/wordpressApi";
-// import { IBlogSearchParams } from "../types";
+import { getAllPosts } from "@/lib/blog";
+import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Image from "next/image";
 import "@/app/blog_content.css";
 
-interface ISingleBlogPost {
-  id: number;
-  title: string;
-  slug: string;
-  content: {
-    rendered: string;
-  };
-  date: string;
-  thumbnail: string | null;
-  categories: number[];
-  altTag?:string;
-  tags: string[];
-  rankmath_meta: {
-    focus_keyword: string;
-    seo_title: string;
-    seo_description: string;
-    canonical_url: string;
-    robots_meta: string[];
-    advanced_robots: string;
-    og_title: string;
-    og_description: string;
-    og_image: string;
-    twitter_title: string;
-    twitter_description: string;
-    twitter_image: string;
-    breadcrumb_title: string;
-    pillar_content: string;
-    cornerstone_content: string;
-    meta_keywords: string;
-  };
-}
-
-const getSingleBlogInfo = cache(async (slug: string) => {
-  const api = await wordpressApi();
-  return (
-    await api.get<ISingleBlogPost>(`/wp-json/custom/grillex/v1/posts/${slug}`)
-  ).data;
-});
-
 interface IProps {
-  params: Promise<{ slug: string }>;
-  //   searchParams: Promise<IBlogSearchParams>;
+  params: { slug: string };
 }
 
+// Generate metadata (normal SEO)
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ ["slug"]: string }>;
-}): Promise<Metadata> {
-  const blogSlug = (await params)["slug"];
-  const categoryPageInfo = await getSingleBlogInfo(blogSlug);
+}: IProps): Promise<Metadata> {
+  const posts = getAllPosts();
+  const post = posts.find((p) => p.slug === params.slug);
+
+  if (!post) return {};
 
   return {
-    title: categoryPageInfo.rankmath_meta.seo_title,
-    description: categoryPageInfo.rankmath_meta.seo_description,
-    keywords: categoryPageInfo.rankmath_meta.meta_keywords,
+    title: post.title,
+    description: post.excerpt,
     openGraph: {
-      title: categoryPageInfo.rankmath_meta.og_title,
-      description: categoryPageInfo.rankmath_meta.og_description,
-      images: categoryPageInfo.rankmath_meta.og_image,
-      url: `/${blogSlug}`,
-      type: "article",
-      locale: "en_US",
-      siteName: "Grillex",
+      title: post.title,
+      description: post.excerpt,
+      images: post.image ? [post.image] : [],
     },
   };
 }
 
-export default async function page({ params }: IProps) {
-  const { slug } = await params;
-  const singleBlog = await getSingleBlogInfo(slug);
+export default function BlogPost({ params }: IProps) {
+  const posts = getAllPosts();
+  const post = posts.find((p) => p.slug === params.slug);
+
+  if (!post) return notFound();
 
   return (
     <section className="w-full container-layout py-10 ts:pt-20">
       <div className="space-y-6 col-span-4">
-        <div
-          className={`w-full overflow-hidden relative aspect-video ts:h-[15rem] group/blogitem`}
-        >
-          <Image
-            className="size-full object-cover aspect-video"
-            src={singleBlog.thumbnail ?? ""}
-            alt={singleBlog.altTag ?? "Grillex Image"}
-            height={1200}
-            width={1200}
-          />
-          <div className="size-full absolute bg-[#00000093] group-hover/blogitem:opacity-0 top-0 bottom-0 text-white flex items-end justify-between px-6 py-3 transition-all duration-700">
-            <p className="tracking-widest">Grillex</p>
-            <p className="px-3 py-1 bg-blue-700 flex-grow-0">
-              {singleBlog.date}
-            </p>
+
+        {post.image && (
+          <div className="w-full overflow-hidden relative aspect-video">
+            <Image
+              className="size-full object-cover"
+              src={post.image}
+              alt={post.title}
+              height={1200}
+              width={1200}
+            />
           </div>
-        </div>
+        )}
 
         <h1 className="uppercase font-bold tracking-widest text-3xl text-gray-700 leading-10">
-          {singleBlog.title}
+          {post.title}
         </h1>
+
+        <p className="text-gray-500">{post.date}</p>
 
         <div
           className="not-tailwind blog_content !font-normal"
-          dangerouslySetInnerHTML={{ __html: singleBlog.content.rendered }}
-        ></div>
+          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        />
       </div>
     </section>
   );
