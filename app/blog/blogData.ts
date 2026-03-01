@@ -910,4 +910,124 @@ export const blogData: IBlogInfo[] = [
     tags: "",
     link: "/modern-metal-furniture-revolutionizing-interior-design-2025",
   },
+
+  {
+    id: "86",
+    heading:
+      "Invisible Grills: The Smartest Safety Upgrade for Modern Homes in Kolkata",
+    image: "/blog/blog41.webp",
+    altTag: "invisible grill for balcony Kolkata",
+    by: "by Grillex",
+    date: "07 Feb, 2025",
+    tags: "",
+    link: "/invisible-grills-smartest-safety-upgrade-modern-homes-kolkata",
+  },
+
+  {
+    id: "87",
+    heading:
+      "Invisible Grills vs. Traditional Iron Grills: Which One Is Better for Your Home?",
+    image: "/blog/blog43.webp",
+    altTag: "invisible grill vs iron grill",
+    by: "by Grillex",
+    date: "09 Feb, 2025",
+    tags: "",
+    link: "/invisible-grills-vs-traditional-iron-grills-which-is-better",
+  },
+
+  {
+    id: "88",
+    heading:
+      "Are Invisible Grills Safe for Children and Pets? Complete Safety Guide",
+    image: "/blog/blog61.webp",
+    altTag: "invisible grill safety for children and pets",
+    by: "by Grillex",
+    date: "11 Feb, 2025",
+    tags: "",
+    link: "/are-invisible-grills-safe-for-children-and-pets-complete-safety-guide",
+  },
+
+  {
+    id: "89",
+    heading:
+      "How Invisible Grills Enhance Balcony Design in Modern Apartments",
+    image: "/blog/blog44.webp",
+    altTag: "invisible grill balcony design",
+    by: "by Grillex",
+    date: "13 Feb, 2025",
+    tags: "",
+    link: "/how-invisible-grills-enhance-balcony-design-modern-apartments",
+  },
+
+  {
+    id: "90",
+    heading:
+      "Cost of Invisible Grill Installation in Kolkata: What You Should Know",
+    image: "/blog/blog79.avif",
+    altTag: "invisible grill cost Kolkata",
+    by: "by Grillex",
+    date: "15 Feb, 2025",
+    tags: "",
+    link: "/cost-of-invisible-grill-installation-kolkata-what-you-should-know",
+  },
+
+  {
+    id: "91",
+    heading:
+      "Invisible Grills for Windows: A Modern Safety Solution",
+    image: "/blog/blog27.webp",
+    altTag: "invisible grill for windows",
+    by: "by Grillex",
+    date: "17 Feb, 2025",
+    tags: "",
+    link: "/invisible-grills-for-windows-modern-safety-solution",
+  },
+
+  {
+    id: "92",
+    heading:
+      "How Long Do Invisible Grills Last? Durability Explained",
+    image: "/blog/blog66.webp",
+    altTag: "invisible grill durability and lifespan",
+    by: "by Grillex",
+    date: "19 Feb, 2025",
+    tags: "",
+    link: "/how-long-do-invisible-grills-last-durability-explained",
+  },
+
+  {
+    id: "93",
+    heading:
+      "Invisible Grills for High-Rise Apartments in Kolkata: The Ultimate Safety Upgrade",
+    image: "/blog/blog29.webp",
+    altTag: "invisible grill high rise apartment Kolkata",
+    by: "by Grillex",
+    date: "21 Feb, 2025",
+    tags: "",
+    link: "/invisible-grills-for-high-rise-apartments-kolkata-ultimate-safety-upgrade",
+  },
+
+  {
+    id: "94",
+    heading:
+      "Common Myths About Invisible Grills Debunked: Facts vs. Fiction",
+    image: "/blog/blog71.webp",
+    altTag: "invisible grill myths and facts",
+    by: "by Grillex",
+    date: "23 Feb, 2025",
+    tags: "",
+    link: "/common-myths-about-invisible-grills-debunked",
+  },
+
+  {
+    id: "95",
+    heading:
+      "Why Professional Installation Is Important for Invisible Grills",
+    image: "/blog/blog39.webp",
+    altTag: "professional invisible grill installation Kolkata",
+    by: "by Grillex",
+    date: "25 Feb, 2025",
+    tags: "",
+    link: "/why-professional-installation-important-invisible-grills",
+  },
 ];
