@@ -110,10 +110,10 @@ export default function Footer() {
       <span className="block text-center text-sm border-t py-5">
         Digital Partner :
         <Link
-          href={"https://ommdigitalsolution.com/"}
+          href={"https://gexart.com/"}
           className="underline pl-1 font-semibold"
         >
-          OMM DIGITAL SOLUTION PVT. LTD.
+          Gexart.com
         </Link>
       </span>
     </footer>
