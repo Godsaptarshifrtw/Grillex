@@ -43,7 +43,7 @@ export default function BlogPost({ params }: IProps) {
             <Image
               className="size-full object-cover"
               src={post.image}
-              alt={post.title}
+              alt={post.title ?? post.heading ?? "Blog post"}
               height={1200}
               width={1200}
             />
@@ -58,7 +58,7 @@ export default function BlogPost({ params }: IProps) {
 
         <div
           className="not-tailwind blog_content !font-normal"
-          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+          dangerouslySetInnerHTML={{ __html: post.contentHtml ?? "" }}
         />
       </div>
     </section>
